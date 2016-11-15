@@ -1,5 +1,6 @@
 package com.checkrise.blog.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,9 @@ public class InMemoryBlogEntryDAO implements BlogEntryDAO {
 
     public InMemoryBlogEntryDAO() {
         entries = new ArrayList<>();
+        entries.add(new BlogEntry("The best day I’ve ever had", "Nothing Special", LocalDateTime.now()));
+        entries.add(new BlogEntry("The absolute worst day I’ve ever had", "Nothing Special", LocalDateTime.now()));
+        entries.add(new BlogEntry("That time at the mall", "Nothing Special", LocalDateTime.now()));
     }
 
     @Override

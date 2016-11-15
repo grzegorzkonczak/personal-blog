@@ -3,6 +3,7 @@ package com.checkrise.blog.model;
 import com.github.slugify.Slugify;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +35,9 @@ public class BlogEntry {
         return entry;
     }
 
-    public LocalDateTime getEntryDateTime() {
-        return entryDateTime;
+    public String getEntryDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm");
+        return entryDateTime.format(formatter);
     }
 
     public void setTitle(String title) {
