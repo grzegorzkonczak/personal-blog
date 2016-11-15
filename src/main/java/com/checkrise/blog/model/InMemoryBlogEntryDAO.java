@@ -13,9 +13,14 @@ public class InMemoryBlogEntryDAO implements BlogEntryDAO {
 
     public InMemoryBlogEntryDAO() {
         entries = new ArrayList<>();
-        entries.add(new BlogEntry("The best day I’ve ever had", "Nothing Special", LocalDateTime.now()));
-        entries.add(new BlogEntry("The absolute worst day I’ve ever had", "Nothing Special", LocalDateTime.now()));
-        entries.add(new BlogEntry("That time at the mall", "Nothing Special", LocalDateTime.now()));
+        BlogEntry entry1 = new BlogEntry("The best day I’ve ever had", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now());
+        BlogEntry entry2 = new BlogEntry("The absolute worst day I’ve ever had", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now());
+        BlogEntry entry3 = new BlogEntry("That time at the mall", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now());
+        entry1.addComment(new BlogComment("Don Jones", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now()));
+        entry1.addComment(new BlogComment("Mike Jones", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now()));
+        entries.add(entry1);
+        entries.add(entry2);
+        entries.add(entry3);
     }
 
     @Override

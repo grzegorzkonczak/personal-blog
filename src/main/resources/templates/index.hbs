@@ -3,7 +3,7 @@
 
         {{#each entries}}
             <article>
-                <h2><a href="detail.html">{{title}}</a></h2>
+                <h2><a href="detail/{{ slug }}">{{title}}</a></h2>
                 <time datetime="{{entryDateTime}}">{{entryDateTime}}</time>
             </article>
         {{else}}

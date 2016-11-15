@@ -1,15 +1,20 @@
 package com.checkrise.blog.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by Grzegorz Kończak on 15.11.2016.
  */
 public class BlogComment {
     private String name;
     private String comment;
+    private LocalDateTime entryDateTime;
 
-    public BlogComment(String name, String comment) {
+    public BlogComment(String name, String comment, LocalDateTime entryDateTime) {
         this.name = name;
         this.comment = comment;
+        this.entryDateTime = entryDateTime;
     }
 
     public String getName() {
@@ -18,6 +23,11 @@ public class BlogComment {
 
     public String getComment() {
         return comment;
+    }
+
+    public String getEntryDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm");
+        return entryDateTime.format(formatter);
     }
 
     @Override

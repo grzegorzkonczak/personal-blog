@@ -25,5 +25,11 @@ public class Blog {
             model.put("entries", dao.findAll());
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/detail/:slug", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("entry", dao.findBySlug(request.params("slug")));
+            return new ModelAndView(model, "detail.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
