@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class InMemoryBlogEntryDAOTest {
 
-    private InMemoryBlogEntryDAO dao;
+    private BlogEntryDAO dao;
     private BlogEntry entry1;
 
     @Before
