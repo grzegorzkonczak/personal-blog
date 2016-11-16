@@ -138,5 +138,12 @@ public class Blog {
             response.redirect(request.session().attribute("destination"));
             return null;
         });
+
+        // removes blog entry
+        get("/remove/:slug", (request, response) -> {
+            dao.remove(dao.findBySlug(request.params("slug")));
+            response.redirect("/");
+            return null;
+        });
     }
 }
