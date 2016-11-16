@@ -5,7 +5,7 @@
             <time datetime="{{ entry.entryDateTime }}">{{ entry.entryDateTime }}</time>
             <div class="entry">
                 <p>{{ entry.entry }}</p>
-                <p><a class="link" href="edit">Edit Entry</a></p>
+                <p><a class="link" href="/edit/{{ entry.slug }}">Edit Entry</a></p>
             </div>
         </article>
     </div>
