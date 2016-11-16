@@ -2,21 +2,24 @@
     <div class="edit-entry">
         {{#if entry }}
             <h2>Edit Entry</h2>
+            <form action="/edit" method="post">
+                <input type="hidden" name="slug" value="{{ entry.slug }}">
+                <label for="title"> Title</label>
+                <input type="text" name="title" value="{{ entry.title }}"><br>
+                <label for="entry">Entry</label>
+                <textarea rows="5" name="entry">{{ entry.entry }}</textarea>
+                <input type="submit" value="Save Entry" class="button">
+            <a href="/detail/{{ entry.slug }}" class="button button-secondary">Cancel</a>
         {{else}}
             <h2>Publish New Entry</h2>
-        {{/if}}
-        <form action="/edit" method="post">
-            <input type="hidden" name="slug" value="{{ entry.slug }}">
-            <label for="title"> Title</label>
-            <input type="text" name="title" value="{{ entry.title }}"><br>
-            <label for="entry">Entry</label>
-            <textarea rows="5" name="entry">{{ entry.entry }}</textarea>
-            <input type="submit" value="Save Entry" class="button">
-            {{#if entry}}
-                <a href="/detail/{{ entry.slug }}" class="button button-secondary">Cancel</a>
-            {{else}}
+            <form action="/" method="post">
+                <label for="title"> Title</label>
+                <input type="text" name="title"><br>
+                <label for="entry">Entry</label>
+                <textarea rows="5" name="entry"></textarea>
+                <input type="submit" value="Publish Entry" class="button">
                 <a href="/" class="button button-secondary">Cancel</a>
-            {{/if}}
+        {{/if}}
         </form>
     </div>
 {{/partial}}

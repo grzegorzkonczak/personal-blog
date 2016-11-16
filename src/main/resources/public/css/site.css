@@ -4,30 +4,39 @@
    Global Styles
    ========================================================================== */
 body {
-	background: url(../../concepts/JavaTechdegree_SparkBlog_1.jg) top center no-repeat;
 	font-size: 15px;
 	color: #000;
 	font-family: 'Noto Serif', Georgia, serif;
-	background: #444;
+
 }
+
+.wrap {
+    min-height: calc(100vh - 101px);
+}
+
 .container {
 	margin: 0 auto;
-	padding: 0 25px;
-	background: #FFF;
+	background: #F6F6F6;
 }
 header .site-header {
-	border-bottom: 1px solid #d1d1d1;
+	border-bottom: 1px solid #DE1B1B;
 	margin: 0 auto;
 	height: 95px;
+	background: linear-gradient(#2B2B2B, transparent 80%),
+	            linear-gradient(0deg, #F6F6F6, transparent),
+    	        #F6F6F6 url('../images/Tech.png') no-repeat center;
+    background-size: cover;
+    box-shadow: 10px 10px rgba(0,0,0, .8);
 }
+
 header .logo {
 	border: 5px solid #000;
 	text-decoration: none;
-	color: #000;
+	color: #E9E581;
 	font-size: 21px;
 	font-weight: bold;
 	padding: 5px 10px;
-	margin: 24px 0 0 0;
+	margin: 24px 0 0 24px;
 	float: left;
 	text-transform: uppercase;
 	font-family: 'Noto Sans', sans-serif;
@@ -37,16 +46,20 @@ header .new-entry {
 	margin: 25px 0 0 0;
 }
 footer {
-	background: #444;
+    border-top: 1px solid #DE1B1B;
+	background: linear-gradient(#F6F6F6, transparent 90%),
+    	            linear-gradient(0deg, #2B2B2B, transparent),
+        	        #2B2B2B url('../images/Tech.png') no-repeat center;
+        background-size: cover;
 	height: 30px;
 	text-align: center;
 	padding: 35px 0;
-	color: #999;
+	color: #f0eda8;
 }
 footer a {
-	color: #999;
+	color: #f0eda8;
 	text-decoration: none;
-	border-bottom: 2px solid #666;
+	border-bottom: 2px solid #f0eda8;
 	padding-bottom: 1px;
 }
 
@@ -63,7 +76,7 @@ footer a {
 	border: 3px solid #000;
 	border-radius: 4px;
 	text-decoration: none;
-	color: #FFF;
+	color: #E9E581;
 	font-weight: bold;
 	font-size: 13px;
 	font-family: 'Noto Sans', sans-serif;
@@ -77,6 +90,7 @@ footer a {
 	border-radius: 100px;
 	padding: 9px;
 	line-height: 1px;
+	margin-right: 24px;
 }
 .button:focus {
 	outline: 0;
@@ -186,12 +200,12 @@ a.link {
 	margin: 0 auto;
 }
 .entry-comments h2 {
-	border-bottom: 1px solid #c1c1c1;
+	border-bottom: 1px solid #DE1B1B;
 	padding-bottom: 35px;
 }
 .comment {
-	border-top: 1px solid #c1c1c1;
-	border-bottom: 1px solid #c1c1c1;
+	border-top: 1px solid #DE1B1B;
+	border-bottom: 1px solid #DE1B1B;
 	padding: 35px 0 20px;
 	margin: 2px 0 0 0;
 }
@@ -214,7 +228,7 @@ a.link {
 
 
 .entry-comments form {
-	border-top: 1px solid #c1c1c1;
+	border-top: 1px solid #DE1B1B;
 	padding: 50px 0;
 	margin-top: 2px;
 }
