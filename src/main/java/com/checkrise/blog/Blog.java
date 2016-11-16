@@ -1,14 +1,17 @@
 package com.checkrise.blog;
 
+import com.checkrise.blog.model.BlogEntry;
 import com.checkrise.blog.model.BlogEntryDAO;
 import com.checkrise.blog.model.InMemoryBlogEntryDAO;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
 /**
@@ -31,5 +34,18 @@ public class Blog {
             model.put("entry", dao.findBySlug(request.params("slug")));
             return new ModelAndView(model, "detail.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/new", (request, response) -> {
+            return new ModelAndView(null, "new.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/", (request, response) -> {
+            String title = request.queryParams("title");
+            String entry = request.queryParams("entry");
+            BlogEntry blogEntry = new BlogEntry(title, entry, LocalDateTime.now());
+            dao.add(blogEntry);
+            response.redirect("/");
+            return null;
+        });
     }
 }
