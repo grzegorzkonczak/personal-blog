@@ -11,9 +11,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
-import static spark.Spark.staticFileLocation;
+import static spark.Spark.*;
 
 /**
  * Created by Grzegorz Kończak on 15.11.2016.
@@ -23,6 +21,35 @@ public class Blog {
     public static void main(String[] args) {
         staticFileLocation("/public");
         BlogEntryDAO dao = new InMemoryBlogEntryDAO();
+
+        // Checks if cookie with password is present, then sets cookie as request attribute
+        // Not dependant on cookie implementation for user authentication (could be swapped relatively easy)
+        before((request, response) -> {
+            if (request.cookie("password") != null){
+                request.attribute("password", request.cookie("password"));
+            }
+        });
+
+        // Redirects not authenticated user to password page with attribute informing
+        // about further destination
+        before("/edit/:slug", (request, response) -> {
+            if (request.attribute("password") == null || !request.attribute("password").equals(InMemoryBlogEntryDAO.PASSWORD)){
+                request.session().attribute("destination", "/edit/" + request.params("slug"));
+                response.redirect("/password");
+                halt();
+            }
+        });
+
+        // Redirects not authenticated user to password page with attribute informing
+        // about further destination
+        before("/new", (request, response) -> {
+            if (request.attribute("password") == null || !request.attribute("password").equals(InMemoryBlogEntryDAO.PASSWORD)){
+                request.session().attribute("destination", "/new");
+                response.redirect("/password");
+                halt();
+            }
+        });
+
 
         // Main page, shows all blog entries
         get("/", (request, response) -> {
@@ -80,6 +107,22 @@ public class Blog {
             BlogEntry entry = dao.findBySlug(slug);
             entry.addComment(new BlogComment(name, comment, LocalDateTime.now()));
             response.redirect("/detail/" + slug);
+            return null;
+        });
+
+        // displays form for entering password
+        get("/password", (request, response) -> {
+            return new ModelAndView(null, "password.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        // handles user authentication. If proper password sets up cookie
+        post("/password", (request, response) -> {
+            String password = request.queryParams("password");
+            if (!password.equals(InMemoryBlogEntryDAO.PASSWORD)){
+                response.redirect("/");
+            }
+            response.cookie("password", password);
+            response.redirect(request.session().attribute("destination"));
             return null;
         });
     }

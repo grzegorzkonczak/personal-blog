@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class InMemoryBlogEntryDAO implements BlogEntryDAO {
 
+    public static final String PASSWORD = "admin";
     List<BlogEntry> entries;
 
     public InMemoryBlogEntryDAO() {
