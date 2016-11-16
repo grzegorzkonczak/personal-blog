@@ -77,14 +77,14 @@ public class Blog {
 
         // displays form for adding new blog entry
         get("/new", (request, response) -> {
-            return new ModelAndView(null, "new.hbs");
+            return new ModelAndView(null, "add-edit.hbs");
         }, new HandlebarsTemplateEngine());
 
         // displays form for editing blog entry
         get("/edit/:slug", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("entry", dao.findBySlug(request.params("slug")));
-            return new ModelAndView(model, "edit.hbs");
+            return new ModelAndView(model, "add-edit.hbs");
         }, new HandlebarsTemplateEngine());
 
         // handles actual editing of blog entry
