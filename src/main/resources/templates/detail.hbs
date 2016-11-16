@@ -24,7 +24,8 @@
                 {{/each}}
             </div>
             <div class="new-comment">
-                <form>
+                <form action="/add-comment" method="post">
+                    <input type="hidden" name="slug" value="{{ entry.slug }}">
                     <label for="name"> Name</label>
                     <input type="text" name="name"><br>
                     <label for="comment">Comment</label>

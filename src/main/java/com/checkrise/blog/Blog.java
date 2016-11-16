@@ -1,5 +1,6 @@
 package com.checkrise.blog;
 
+import com.checkrise.blog.model.BlogComment;
 import com.checkrise.blog.model.BlogEntry;
 import com.checkrise.blog.model.BlogEntryDAO;
 import com.checkrise.blog.model.InMemoryBlogEntryDAO;
@@ -68,6 +69,17 @@ public class Blog {
             blogEntry.setTitle(title);
             blogEntry.setEntry(entry);
             response.redirect("detail/" + slug);
+            return null;
+        });
+
+        // handles adding comment to blog entry
+        post("/add-comment", (request, response) -> {
+            String name = request.queryParams("name");
+            String comment = request.queryParams("comment");
+            String slug = request.queryParams("slug");
+            BlogEntry entry = dao.findBySlug(slug);
+            entry.addComment(new BlogComment(name, comment, LocalDateTime.now()));
+            response.redirect("/detail/" + slug);
             return null;
         });
     }
