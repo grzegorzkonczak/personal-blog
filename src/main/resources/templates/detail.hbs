@@ -2,6 +2,13 @@
     <div class="entry-list single">
         <article>
             <h1>{{ entry.title }}</h1>
+            <p class="tags">Tags:
+                {{#each entry.tags}}
+                    |{{ this }}|
+                {{else}}
+                    No tags for this entry
+                {{/each}}
+            </p>
             <time datetime="{{ entry.entryDateTime }}">{{ entry.entryDateTime }}</time>
             <div class="entry">
                 <p>{{ entry.entry }}</p>

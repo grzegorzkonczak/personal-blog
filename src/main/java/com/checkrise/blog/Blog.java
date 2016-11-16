@@ -8,6 +8,7 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,7 +63,12 @@ public class Blog {
         post("/", (request, response) -> {
             String title = request.queryParams("title");
             String entry = request.queryParams("entry");
+            String[] tags = request.queryParams("tags").trim().split(" +");
             BlogEntry blogEntry = new BlogEntry(title, entry, LocalDateTime.now());
+            // Checks for empty tags list
+            if (tags.length > 1 || !tags[0].equals("")) {
+                blogEntry.setTags(Arrays.asList(tags));
+            }
             dao.add(blogEntry);
             response.redirect("/");
             return null;
@@ -92,9 +98,16 @@ public class Blog {
             String title = request.queryParams("title");
             String entry = request.queryParams("entry");
             String slug = request.queryParams("slug");
+            String[] tags = request.queryParams("tags").trim().split(" +");
             BlogEntry blogEntry = dao.findBySlug(slug);
             blogEntry.setTitle(title);
             blogEntry.setEntry(entry);
+            // Checks for empty tags list
+            if (tags.length > 1 || !tags[0].equals("")) {
+                blogEntry.setTags(Arrays.asList(tags));
+            } else {
+                blogEntry.clearTags();
+            }
             response.redirect("detail/" + slug);
             return null;
         });

@@ -17,6 +17,7 @@ public class BlogEntry {
     private String entry;
     private LocalDateTime entryDateTime;
     private List<BlogComment> comments;
+    private List<String> tags;
 
     public BlogEntry(String title, String entry, LocalDateTime entryDateTime) {
         this.title = title;
@@ -25,6 +26,7 @@ public class BlogEntry {
         comments = new ArrayList<>();
         Slugify slugify = new Slugify();
         slug = slugify.slugify(title);
+        tags = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -62,6 +64,22 @@ public class BlogEntry {
 
     public String getSlug() {
         return slug;
+    }
+
+    public void setTags (List<String> tags){
+        this.tags = tags;
+    }
+
+    public List<String> getTags (){
+        return new ArrayList<>(tags);
+    }
+
+    public void addTag(String tag) {
+        tags.add(tag);
+    }
+
+    public void clearTags() {
+        tags.removeAll(tags);
     }
 
     @Override

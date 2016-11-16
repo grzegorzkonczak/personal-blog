@@ -8,6 +8,8 @@
                 <input type="text" name="title" value="{{ entry.title }}"><br>
                 <label for="entry">Entry</label>
                 <textarea rows="5" name="entry">{{ entry.entry }}</textarea>
+                <label for="tags"> Tags</label>
+                <input type="text" name="tags" value="{{#each entry.tags}}{{this}} {{/each}}">
                 <input type="submit" value="Save Entry" class="button">
             <a href="/detail/{{ entry.slug }}" class="button button-secondary">Cancel</a>
         {{else}}
@@ -17,6 +19,8 @@
                 <input type="text" name="title"><br>
                 <label for="entry">Entry</label>
                 <textarea rows="5" name="entry"></textarea>
+                <label for="tags"> Tags</label>
+                <input type="text" name="tags" placeholder="Enter tags separated by spaces"><br>
                 <input type="submit" value="Publish Entry" class="button">
                 <a href="/" class="button button-secondary">Cancel</a>
         {{/if}}

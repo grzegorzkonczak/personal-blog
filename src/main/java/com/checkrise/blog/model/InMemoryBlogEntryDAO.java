@@ -19,6 +19,9 @@ public class InMemoryBlogEntryDAO implements BlogEntryDAO {
         BlogEntry entry3 = new BlogEntry("That time at the mall", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now());
         entry1.addComment(new BlogComment("Don Jones", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now()));
         entry1.addComment(new BlogComment("Mike Jones", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Vestibulum ut metus eleifend, malesuada nisl at, scelerisque sapien. Vivamus pharetra massa libero, sed feugiat turpis efficitur at.", LocalDateTime.now()));
+        entry1.addTag("New");
+        entry1.addTag("Hot");
+        entry1.addTag("Mind Blowing");
         entries.add(entry1);
         entries.add(entry2);
         entries.add(entry3);

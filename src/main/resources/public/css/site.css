@@ -171,6 +171,13 @@ a.link {
 .entry-list time {
 	color: #888;
 }
+
+.entry-list .tags {
+    color: #888;
+    border: 1px solid #888;
+    border-radius: 10px;
+}
+
 .entry-list.single {
 	padding-bottom: 30px;
 }
