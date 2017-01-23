@@ -15,8 +15,8 @@ Base requirements were as follows:
 7. A DAO interface and implementation should be present for blog entries. Implementation allows to add and retrive bog entries
 8. Styling implemented with separate CSS file, fonts have colors and faces, header fonts are larger than body fonts
 9. All routes should be mapped correctly and use correct HTTP methods:
-- index page mapped as "/"
-- details page mapped as "/blog/{id}" or similar
+  - index page mapped as "/"
+  - details page mapped as "/blog/{id}" or similar
 
 Additional requirements (also implemented):
 
